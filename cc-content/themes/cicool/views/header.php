@@ -11,13 +11,18 @@
 
     <title> <?= isset($title) ? $title : site_name() ?></title>
 
-    <link href="<?= theme_asset() ?>vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="<?= theme_asset() ?>vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="<?= theme_asset() ?>vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
-    <link href="<?= theme_asset() ?>css/creative.css" rel="stylesheet">
+    <!-- <link href="<?= theme_asset(); ?>/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="<?= BASE_ASSET ?>admin-lte/plugins/morris/morris.css">
-    <link rel="stylesheet" href="<?= BASE_ASSET ?>flag-icon/css/flag-icon.css" rel="stylesheet" media="all" />
+    <link href="<?= theme_asset(); ?>/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+
+    <link href="<?= theme_asset(); ?>/vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+
+    <link href="<?= theme_asset(); ?>/css/creative.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="<?= BASE_ASSET; ?>admin-lte/plugins/morris/morris.css">
+    <link rel="stylesheet" href="<?= BASE_ASSET; ?>flag-icon/css/flag-icon.css" rel="stylesheet" media="all" /> -->
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -25,7 +30,59 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    
+    <script src="<?= theme_asset(); ?>/vendor/jquery/jquery.min.js"></script>
 
-    <script src="<?= theme_asset() ?>vendor/jquery/jquery.min.js"></script>
+    <!-- custom -->
+      <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+         function hideURLbar(){ window.scrollTo(0,1); } 
+      </script>
+      <!-- //for-mobile-apps -->
+      <link href="<?= theme_asset(); ?>/store/bootstrap.css" rel='stylesheet' type='text/css' />
+      <!-- Custom Theme files -->
+      <link href="<?= theme_asset(); ?>/store/style.css" rel='stylesheet' type='text/css' />
+      <!-- js -->
+      <!-- <script src="<?= theme_asset(); ?>/store/jquery-1.11.1.min.js"></script> -->
+      <!-- //js -->
+      <!-- start-smoth-scrolling -->
+      <script type="text/javascript" src="<?= theme_asset(); ?>/store/move-top.js"></script>
+      <script type="text/javascript" src="<?= theme_asset(); ?>/store/easing.js"></script>
+      <script type="text/javascript">
+         jQuery(document).ready(function($) {
+         	$(".scroll").click(function(event){		
+         		event.preventDefault();
+         		$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+         	});
+         });
+      </script>
+      <!-- start-smoth-scrolling -->
+      <link href="<?= theme_asset(); ?>/store/font-awesome.css" rel="stylesheet">
+      <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+      <link href='http://fonts.googleapis.com/css?family=Noto+Sans:400,700' rel='stylesheet' type='text/css'>
+      <!--- start-rate---->
+      <script src="<?= theme_asset(); ?>/store/jstarbox.js"></script>
+      <link rel="stylesheet" href="<?= theme_asset(); ?>/store/jstarbox.css" type="text/css" media="screen" charset="utf-8" />
+      <link href="<?= theme_asset(); ?>/store/custom.css" rel='stylesheet' type='text/css' />
+      <script type="text/javascript">
+         jQuery(function() {
+         jQuery('.starbox').each(function() {
+         	var starbox = jQuery(this);
+         		starbox.starbox({
+         		average: starbox.attr('data-start-value'),
+         		changeable: starbox.hasClass('unchangeable') ? false : starbox.hasClass('clickonce') ? 'once' : true,
+         		ghosting: starbox.hasClass('ghosting'),
+         		autoUpdateAverage: starbox.hasClass('autoupdate'),
+         		buttons: starbox.hasClass('smooth') ? false : starbox.attr('data-button-count') || 5,
+         		stars: starbox.attr('data-star-count') || 5
+         		}).bind('starbox-value-changed', function(event, value) {
+         		if(starbox.hasClass('random')) {
+         		var val = Math.random();
+         		starbox.next().text(' '+val);
+         		return val;
+         		} 
+         	})
+         });
+         });
+      </script>
 
 </head>
