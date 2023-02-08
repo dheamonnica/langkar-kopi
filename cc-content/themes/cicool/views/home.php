@@ -97,15 +97,15 @@
          </ol>
          <div class="carousel-inner" role="listbox">
             <div class="item active">
-               <a href="kitchen.html"> <img class="bg-slide" src="<?= theme_asset(); ?>/img/Slide1.jpeg"
+               <a href="kitchen.html"> <img class="bg-slide" src="https://dummyimage.com/1080x735/000/fff"
                      alt="First slide"></a>
             </div>
             <div class="item">
-               <a href="care.html"> <img class="bg-slide " src="<?= theme_asset(); ?>/img/Slide2.jpeg"
+               <a href="care.html"> <img class="bg-slide " src="https://dummyimage.com/1080x735/000/fff"
                      alt="Second slide"></a>
             </div>
             <div class="item">
-               <a href="hold.html"><img class="bg-slide " src="<?= theme_asset(); ?>/img/Slide3.jpeg"
+               <a href="hold.html"><img class="bg-slide " src="https://dummyimage.com/1080x735/000/fff"
                      alt="Third slide"></a>
             </div>
          </div>
@@ -128,7 +128,7 @@
                   <div class="col-md-3 pro-1">
                      <div class="col-m">
                         <a href="#" data-toggle="modal" data-target="#myModal17" class="offer-img">
-                           <img src="<?= BASE_URL . 'uploads/produk/' . $produk->gambar_produk; ?>" class="img-responsive"
+                           <img src="<?= BASE_URL . 'uploads/produk/' . $produk->photo; ?>" class="img-responsive"
                               alt="">
                         </a>
                         <div class="mid-1">
@@ -139,17 +139,17 @@
                            </div>
                            <div class="mid-2">
                               <p><em class="item_price">Rp.
-                                    <?= _ent($produk->harga_produk); ?>
+                                    <?= _ent($produk->harga); ?>
                                  </em></p>
 
                               <div class="clearfix"></div>
                            </div>
                            <div class="add add-2">
                               <button class="btn btn-danger my-cart-btn my-cart-b"
-                                 data-id="<?= _ent($produk->id_produk); ?>" data-name="<?= _ent($produk->nama_produk); ?>"
-                                 data-summary="summary 1" data-price="<?= _ent($produk->harga_produk); ?>"
+                                 data-id="<?= _ent($produk->id); ?>" data-name="<?= _ent($produk->nama_produk); ?>"
+                                 data-summary="summary 1" data-price="<?= _ent($produk->harga); ?>"
                                  data-quantity="1"
-                                 data-image="<?= BASE_URL . 'uploads/produk/' . $produk->gambar_produk; ?>">Add to
+                                 data-image="<?= BASE_URL . 'uploads/produk/' . $produk->photo; ?>">Add to
                                  Cart</button>
                            </div>
                         </div>
@@ -162,7 +162,7 @@
                      <div class="col-md-3 pro-1">
                         <div class="col-m">
                            <a href="#" data-toggle="modal" data-target="#myModal17" class="offer-img">
-                              <img src="<?= BASE_URL . 'uploads/produk/' . $produk->gambar_produk; ?>"
+                              <img src="<?= BASE_URL . 'uploads/produk/' . $produk->photo; ?>"
                                  class="img-responsive" alt="">
                            </a>
                            <div class="mid-1">
@@ -173,17 +173,17 @@
                               </div>
                               <div class="mid-2">
                                  <p><em class="item_price">Rp.
-                                       <?= _ent($produk->harga_produk); ?>
+                                       <?= _ent($produk->harga); ?>
                                     </em></p>
 
                                  <div class="clearfix"></div>
                               </div>
                               <div class="add add-2">
                                  <button class="btn btn-danger my-cart-btn my-cart-b"
-                                    data-id="<?= _ent($produk->id_produk); ?>"
+                                    data-id="<?= _ent($produk->id); ?>"
                                     data-name="<?= _ent($produk->nama_produk); ?>" data-summary="summary 1"
-                                    data-price="<?= _ent($produk->harga_produk); ?>" data-quantity="1"
-                                    data-image="<?= BASE_URL . 'uploads/produk/' . $produk->gambar_produk; ?>">Add to
+                                    data-price="<?= _ent($produk->harga); ?>" data-quantity="1"
+                                    data-image="<?= BASE_URL . 'uploads/produk/' . $produk->photo; ?>">Add to
                                     Cart</button>
                               </div>
                            </div>
@@ -196,7 +196,7 @@
                         <div class="col-md-3 pro-1">
                            <div class="col-m">
                               <a href="#" data-toggle="modal" data-target="#myModal17" class="offer-img">
-                                 <img src="<?= BASE_URL . 'uploads/produk/' . $produk->gambar_produk; ?>"
+                                 <img src="<?= BASE_URL . 'uploads/produk/' . $produk->photo; ?>"
                                     class="img-responsive" alt="">
                               </a>
                               <div class="mid-1">
@@ -207,17 +207,17 @@
                                  </div>
                                  <div class="mid-2">
                                     <p><em class="item_price">Rp.
-                                          <?= _ent($produk->harga_produk); ?>
+                                          <?= _ent($produk->harga); ?>
                                        </em></p>
 
                                     <div class="clearfix"></div>
                                  </div>
                                  <div class="add add-2">
                                     <button class="btn btn-danger my-cart-btn my-cart-b"
-                                       data-id="<?= _ent($produk->id_produk); ?>"
+                                       data-id="<?= _ent($produk->id); ?>"
                                        data-name="<?= _ent($produk->nama_produk); ?>" data-summary="summary 1"
-                                       data-price="<?= _ent($produk->harga_produk); ?>" data-quantity="1"
-                                       data-image="<?= BASE_URL . 'uploads/produk/' . $produk->gambar_produk; ?>">Add to
+                                       data-price="<?= _ent($produk->harga); ?>" data-quantity="1"
+                                       data-image="<?= BASE_URL . 'uploads/produk/' . $produk->photo; ?>">Add to
                                        Cart</button>
                                  </div>
                               </div>
@@ -235,20 +235,21 @@
 
                <div class="clearfix"></div>
                <div class="footer-bottom">
-                  <h2><a href="index-2.html"></b>Langkar Kopi<span>The Best Coffee Shop</span></a></h2>
+                  <h2><a href="index-2.html"></b>Langkar Kopi<span>𝓖𝓸𝓸𝓭 𝓬𝓸𝓯𝓯𝓮𝓮 𝓖𝓸𝓸𝓭 𝓿𝓲𝓫𝓮</span></a></h2>
                   <ul class="bg-ig social-fo">
                      <li><a href="#" class=" face"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                     <li><a href="#" class=" face"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                     <li><a href="#" class=" face"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
                   </ul>
                   <div class=" address">
                      <div class="col-md-12 fo-grid1">
-                        <p><i class="fa fa-home" aria-hidden="true"></i>Jalan Nangka Raya, tanjung barat - jakarta
-                           selatan</p>
+                        <p><i class="fa fa-home" aria-hidden="true"></i>Jl. Nangka Raya No.10, RT.11/RW.4, Tj. Bar., Kec. Jagakarsa, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12530</p>
                      </div>
                      <div class="clearfix"></div>
                   </div>
                </div>
                <div class="copy-right">
-                  <p> &copy; 2022 HARUS WISUDA!!!</p>
+                  <p> &copy; 2022</p>
                </div>
             </div>
          </div>

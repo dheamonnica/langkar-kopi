@@ -14,6 +14,8 @@ class Web extends Front
     public function __construct()
     {
         parent::__construct();
+        $this->load->model('produk/model_produk');
+        $this->load->model('kategori/model_kategori');
     }
 
     public function index()
@@ -48,7 +50,9 @@ class Web extends Front
         if (defined('IS_DEMO')) {
             $this->template->build('home-demo');
         } else {
-            $this->template->build('home');
+		    $this->data['kategoris'] = $this->model_kategori->get();
+		    $this->data['produks'] = $this->model_produk->get();
+            $this->template->build('home', $this->data);
         }
     }
 
