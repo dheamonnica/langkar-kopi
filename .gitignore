@@ -1,8 +1,11 @@
 # .DS_Store
 
-application/cache/*
-!application/cache/index.html
-!application/cache/.htaccess
+# application/cache/*
+# !application/cache/index.html
+# !application/cache/.htaccess
+application/thrid-party/codeigneter-debugbar
+cc-content/extention/backup-restore-db
+cc-content/extention/discuss
 
 # application/logs/*
 # !application/logs/index.html
