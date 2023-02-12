@@ -11,3 +11,4 @@ $lang['nama_cust'] = 'Nama Cust';
 $lang['status'] = 'Status';
 $lang['kasir_id'] = 'Kasir Id';
 $lang['created_at'] = 'Created At';
+$lang['nama_produk'] = 'Nama Produk';

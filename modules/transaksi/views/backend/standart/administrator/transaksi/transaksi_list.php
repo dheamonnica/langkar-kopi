@@ -45,7 +45,7 @@ jQuery(document).ready(domo);
                   <div class="widget-user-header ">
                      <div class="row pull-right">
                         <?php is_allowed('transaksi_add', function(){?>
-                        <!-- <a class="btn btn-flat btn-success btn_add_new" id="btn_add_new" title="<?= cclang('add_new_button', [cclang('transaksi')]); ?>  (Ctrl+a)" href="<?=  site_url('administrator/transaksi/add'); ?>"><i class="fa fa-plus-square-o" ></i> <?= cclang('add_new_button', [cclang('transaksi')]); ?></a> -->
+                        <a class="btn btn-flat btn-success btn_add_new" id="btn_add_new" title="<?= cclang('add_new_button', [cclang('transaksi')]); ?>  (Ctrl+a)" href="<?=  site_url('administrator/transaksi/add'); ?>"><i class="fa fa-plus-square-o" ></i> <?= cclang('add_new_button', [cclang('transaksi')]); ?></a>
                         <!-- <?php }) ?>
                         <?php is_allowed('transaksi_export', function(){?>
                         <a class="btn btn-flat btn-success" title="<?= cclang('export'); ?> <?= cclang('transaksi') ?> " href="<?= site_url('administrator/transaksi/export?q='.$this->input->get('q').'&f='.$this->input->get('f')); ?>"><i class="fa fa-file-excel-o" ></i> <?= cclang('export'); ?> XLS</a>
@@ -91,6 +91,7 @@ jQuery(document).ready(domo);
                             <option <?= $this->input->get('f') == 'status' ? 'selected' :''; ?> value="status">Status</option>
                             <option <?= $this->input->get('f') == 'kasir_id' ? 'selected' :''; ?> value="kasir_id">Kasir Id</option>
                             <option <?= $this->input->get('f') == 'created_at' ? 'selected' :''; ?> value="created_at">Created At</option>
+                            <option <?= $this->input->get('f') == 'nama_produk' ? 'selected' :''; ?> value="nama_produk">Nama Produk</option>
                            </select>
                         </div>
                         <div class="col-sm-1 padd-left-0 ">
@@ -127,6 +128,7 @@ jQuery(document).ready(domo);
                            <th data-field="status"data-sort="1" data-primary-key="0"> <?= cclang('status') ?></th>
                            <th data-field="kasir_id"data-sort="1" data-primary-key="0"> <?= cclang('kasir_id') ?></th>
                            <th data-field="created_at"data-sort="1" data-primary-key="0"> <?= cclang('created_at') ?></th>
+                           <th data-field="nama_produk"data-sort="1" data-primary-key="0"> <?= cclang('nama_produk') ?></th>
                            <th>Action</th>                        </tr>
                      </thead>
                      <tbody id="tbody_transaksi">
@@ -144,6 +146,7 @@ jQuery(document).ready(domo);
                            <td><span class="list_group-status"><?= _ent($transaksi->status); ?></span></td> 
                            <td><span class="list_group-kasir_id"><?= _ent($transaksi->kasir_id); ?></span></td> 
                            <td><span class="list_group-created_at"><?= _ent($transaksi->created_at); ?></span></td> 
+                           <td><span class="list_group-nama_produk"><?= _ent($transaksi->nama_produk); ?></span></td> 
                            <td width="200">
                             
                                                               <?php is_allowed('transaksi_view', function() use ($transaksi){?>

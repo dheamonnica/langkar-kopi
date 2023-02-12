@@ -57,26 +57,26 @@
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">
-        <div class="col-xs-8">
+        <!-- <div class="col-xs-8">
           <div class="checkbox icheck">
             <label>
               <input type="checkbox" name="remember" value="1"> <?= cclang('remember_me'); ?>
             </label>
           </div>
-        </div>
+        </div> -->
         <div class="col-xs-4">
           <button type="submit" class="btn btn-primary btn-block btn-flat"><?= cclang('sign_in'); ?></button>
         </div>
       </div>
       <?= form_close(); ?>
 
-      <a href="<?= site_url('administrator/forgot-password'); ?>"><?= cclang('i_forgot_my_password'); ?></a><br>
+      <!-- <a href="<?= site_url('administrator/forgot-password'); ?>"><?= cclang('i_forgot_my_password'); ?></a><br> -->
       <a href="<?= site_url('administrator/register'); ?>" class="text-center"><?= cclang('register_a_new_membership'); ?></a>
 
       <br>
       <br>
-      <p align="center"><b>-<?= cclang('or') ?>-</b></p>
-      <a href="<?= site_url('oauth/v/google'); ?>" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google"></i> <?= cclang('sign_in_using') ?> Google+</a>
+      <!-- <p align="center"><b>-<?= cclang('or') ?>-</b></p> -->
+      <!-- <a href="<?= site_url('oauth/v/google'); ?>" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google"></i> <?= cclang('sign_in_using') ?> Google+</a> -->
 
     </div>
   </div>

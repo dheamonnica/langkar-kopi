@@ -39,16 +39,16 @@
         'id'      => 'form_login',
         'method'  => 'POST'
       ]); ?>
-      <div class="form-group has-feedback <?= form_error('full_name') ? 'has-error' : ''; ?>">
+      <!-- <div class="form-group has-feedback <?= form_error('full_name') ? 'has-error' : ''; ?>">
         <label>Full Name </label>
         <input class="form-control" placeholder="Full Name" name="full_name" value="<?= set_value('full_name'); ?>">
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
-      </div>
-      <div class="form-group has-feedback <?= form_error('username') ? 'has-error' : ''; ?>">
+      </div> -->
+      <!-- <div class="form-group has-feedback <?= form_error('username') ? 'has-error' : ''; ?>">
         <label>Username <span class="required">*</span> </label>
         <input class="form-control" placeholder="Username" name="username" value="<?= set_value('username'); ?>">
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
-      </div>
+      </div> -->
       <div class="form-group has-feedback <?= form_error('email') ? 'has-error' : ''; ?>">
         <label>Email <span class="required">*</span> </label>
         <input type="email" class="form-control" placeholder="Email" name="email" value="<?= set_value('email'); ?>">
@@ -59,7 +59,7 @@
         <input type="password" class="form-control" placeholder="Password" name="password">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
-      <?php $cap = get_captcha(); ?>
+      <!-- <?php $cap = get_captcha(); ?>
       <div class="form-group <?= form_error('email') ? 'has-error' : ''; ?>">
         <label><?= cclang('human_challenge'); ?> <span class="required">*</span> </label>
         <div class="captcha-box" data-captcha-time="<?= $cap['time']; ?>">
@@ -67,18 +67,18 @@
           <a class="btn btn-flat  refresh-captcha  "><i class="fa fa-refresh text-danger"></i></a>
           <span class="box-image"><?= $cap['image']; ?></span>
         </div>
-      </div>
+      </div> -->
       <small class="info help-block">
       </small>
       <div class="row">
-        <div class="col-xs-8">
+        <!-- <div class="col-xs-8">
           <div class="checkbox icheck">
             <label>
               <input type="checkbox" name="agree" value="1"> <?= cclang('i_agree_to_the_terms'); ?>
             </label>
           </div>
-        </div>
-        <div class="col-xs-4">
+        </div> -->
+        <div class="col-xs-6">
           <button type="submit" class="btn btn-primary btn-block btn-flat"><?= cclang('register'); ?></button>
         </div>
       </div>

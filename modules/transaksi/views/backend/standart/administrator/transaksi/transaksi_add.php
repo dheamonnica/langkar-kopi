@@ -102,28 +102,27 @@
                         </div>
                     
 
-    <div class="form-group group-nama_cust ">
-                            <label for="nama_cust" class="col-sm-2 control-label">Nama Cust                                <i class="required">*</i>
-                                </label>
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control" name="nama_cust" id="nama_cust" placeholder="Nama Cust" value="<?= set_value('nama_cust'); ?>">
-                                <small class="info help-block">
-                                    <b>Input Nama Cust</b> Max Length : 255.</small>
-                            </div>
-                        </div>
-                    
-
     <div class="form-group group-status ">
                             <label for="status" class="col-sm-2 control-label">Status                                <i class="required">*</i>
                                 </label>
                             <div class="col-sm-8">
                                 <select class="form-control chosen chosen-select" name="status" id="status" data-placeholder="Select Status">
                                     <option value=""></option>
-                                    <option value="0">On Progress</option>
-                                    <option value="1">Done</option>
+                                    <option value="on-progress">On Progress</option>
+                                    <option value="done">Done</option>
                                                                     </select>
                                 <small class="info help-block">
 
+                                    </small>
+                            </div>
+                        </div>
+                    
+
+    <div class="form-group group-nama_produk ">
+                            <label for="nama_produk" class="col-sm-2 control-label">Nama Produk                                </label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="nama_produk" id="nama_produk" placeholder="Nama Produk" value="<?= set_value('nama_produk'); ?>">
+                                <small class="info help-block">
                                     </small>
                             </div>
                         </div>

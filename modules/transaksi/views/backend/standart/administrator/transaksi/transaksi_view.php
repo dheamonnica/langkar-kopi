@@ -84,18 +84,18 @@ jQuery(document).ready(domo);
                     </div>
                                         
                     <div class="form-group ">
-                        <label for="content" class="col-sm-2 control-label">Nama Cust </label>
-
-                        <div class="col-sm-8">
-                        <span class="detail_group-nama_cust"><?= _ent($transaksi->nama_cust); ?></span>
-                        </div>
-                    </div>
-                                        
-                    <div class="form-group ">
                         <label for="content" class="col-sm-2 control-label">Status </label>
 
                         <div class="col-sm-8">
                         <span class="detail_group-status"><?= _ent($transaksi->status); ?></span>
+                        </div>
+                    </div>
+                                        
+                    <div class="form-group ">
+                        <label for="content" class="col-sm-2 control-label">Nama Produk </label>
+
+                        <div class="col-sm-8">
+                        <span class="detail_group-nama_produk"><?= _ent($transaksi->nama_produk); ?></span>
                         </div>
                     </div>
                                         

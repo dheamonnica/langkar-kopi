@@ -115,27 +115,14 @@
                         
                                                     
                         
-                        <div class="form-group group-nama_cust  ">
-                                <label for="nama_cust" class="col-sm-2 control-label">Nama Cust                                    <i class="required">*</i>
-                                    </label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" name="nama_cust" id="nama_cust" placeholder="" value="<?= set_value('nama_cust', $transaksi->nama_cust); ?>">
-                                    <small class="info help-block">
-                                        <b>Input Nama Cust</b> Max Length : 255.</small>
-                                </div>
-                            </div>
-                        
-                        
-                                                    
-                        
                         <div class="form-group ">
                                 <label for="status" class="col-sm-2 control-label">Status                                    <i class="required">*</i>
                                     </label>
                                 <div class="col-sm-8">
                                     <select class="form-control chosen chosen-select" name="status" id="status" data-placeholder="Select Status">
                                         <option value=""></option>
-                                        <option <?= $transaksi->status == "0" ? 'selected' :''; ?> value="0">On Progress</option>
-                                        <option <?= $transaksi->status == "1" ? 'selected' :''; ?> value="1">Done</option>
+                                        <option <?= $transaksi->status == "on-progress" ? 'selected' :''; ?> value="on-progress">On Progress</option>
+                                        <option <?= $transaksi->status == "done" ? 'selected' :''; ?> value="done">Done</option>
                                                                             </select>
                                     <small class="info help-block">
                                         </small>
@@ -143,7 +130,19 @@
                             </div>
                         
                         
-                                                                                
+                                                                                                            
+                        
+                        <div class="form-group group-nama_produk  ">
+                                <label for="nama_produk" class="col-sm-2 control-label">Nama Produk                                    </label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" name="nama_produk" id="nama_produk" placeholder="" value="<?= set_value('nama_produk', $transaksi->nama_produk); ?>">
+                                    <small class="info help-block">
+                                        </small>
+                                </div>
+                            </div>
+                        
+                        
+                        
                                                     <div class="message"></div>
                                                 <div class="row-fluid col-md-7 container-button-bottom">
                             <button class="btn btn-flat btn-primary btn_save btn_action" id="btn_save" data-stype='stay' title="<?= cclang('save_button'); ?> (Ctrl+s)">

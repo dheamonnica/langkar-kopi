@@ -5,7 +5,7 @@ class Model_transaksi extends MY_Model {
 
     private $primary_key    = 'id';
     private $table_name     = 'transaksi';
-    public $field_search   = ['produk_id', 'harga', 'qty', 'total', 'nama_cust', 'status', 'kasir_id', 'created_at'];
+    public $field_search   = ['produk_id', 'harga', 'qty', 'total', 'nama_cust', 'status', 'kasir_id', 'created_at', 'nama_produk'];
     public $sort_option = ['id', 'DESC'];
     
     public function __construct()
@@ -109,8 +109,7 @@ class Model_transaksi extends MY_Model {
     public function filter_avaiable() {
 
         if (!$this->aauth->is_admin()) {
-            $this->db->where($this->table_name.'.kasir_id', get_user_data('id'));
-        }
+            }
 
         return $this;
     }

@@ -68,13 +68,13 @@ class Transaksi extends Admin
 	*/
 	public function add_save()
 	{
-		if (!$this->is_allowed('transaksi_add', false)) {
-			echo json_encode([
-				'success' => false,
-				'message' => cclang('sorry_you_do_not_have_permission_to_access')
-				]);
-			exit;
-		}
+		// if (!$this->is_allowed('transaksi_add', false)) {
+		// 	echo json_encode([
+		// 		'success' => false,
+		// 		'message' => cclang('sorry_you_do_not_have_permission_to_access')
+		// 		]);
+		// 	exit;
+		// }
 		
 		
 
@@ -90,9 +90,6 @@ class Transaksi extends Admin
 		// $this->form_validation->set_rules('total', 'Total', 'trim|required|max_length[12]');
 		
 
-		// $this->form_validation->set_rules('nama_cust', 'Nama Cust', 'trim|required|max_length[255]');
-		
-
 		// $this->form_validation->set_rules('status', 'Status', 'trim|required');
 		
 
@@ -102,12 +99,14 @@ class Transaksi extends Admin
 		
 			$save_data = [
 				'produk_id' => $this->input->post('id'),
+				'nama_produk' => $this->input->post('name'),
 				'harga' => $this->input->post('price'),
 				'qty' => $this->input->post('quantity'),
 				'total' => $this->input->post('total'),
-				'nama_cust' => $this->input->post('nama_cust'),
-				'status' => $this->input->post('status'),
-				'kasir_id' => get_user_data('id'),				'created_at' => date('Y-m-d H:i:s'),
+				'nama_cust' => $this->input->post('summary'),
+				'status' => 'on-progress',
+				'kasir_id' => '',
+				'created_at' => date('Y-m-d H:i:s'),
 			];
 
 			
@@ -202,9 +201,6 @@ class Transaksi extends Admin
 		$this->form_validation->set_rules('total', 'Total', 'trim|required|max_length[12]');
 		
 
-		$this->form_validation->set_rules('nama_cust', 'Nama Cust', 'trim|required|max_length[255]');
-		
-
 		$this->form_validation->set_rules('status', 'Status', 'trim|required');
 		
 
@@ -212,13 +208,14 @@ class Transaksi extends Admin
 		if ($this->form_validation->run()) {
 		
 			$save_data = [
-				'produk_id' => $this->input->post('produk_id'),
-				'harga' => $this->input->post('harga'),
-				'qty' => $this->input->post('qty'),
-				'total' => $this->input->post('total'),
-				'nama_cust' => $this->input->post('nama_cust'),
-				'status' => $this->input->post('status'),
-				'kasir_id' => get_user_data('id'),				'created_at' => date('Y-m-d H:i:s'),
+				// 'produk_id' => $this->input->post('produk_id'),
+				// 'harga' => $this->input->post('harga'),
+				// 'qty' => $this->input->post('qty'),
+				// 'total' => $this->input->post('total'),
+				// 'status' => $this->input->post('status'),
+				'kasir_id' => get_user_data('username'),
+				'updated_at' => date('Y-m-d H:i:s'),
+				// 'nama_produk' => $this->input->post('nama_produk'),
 			];
 
 			
