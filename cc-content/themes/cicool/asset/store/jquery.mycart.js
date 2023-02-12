@@ -185,13 +185,13 @@
         '<div class="modal-content">' +
         '<div class="modal-header">' +
         '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
-        '<h4 class="modal-title" id="myModalLabel">My Cart</h4>' +
+        '<h4 class="modal-title" id="myModalLabel">My Order</h4>' +
         '</div>' +
         '<div class="modal-body">' +
         '<table class="table table-hover table-responsive" id="' + idCartTable + '"></table>' +
         '</div>' +
         '<div class="modal-footer">' +
-        '<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>' +
+        '<button type="button" class="btn btn-default"><a href="/login">Submit</a></button>' +
 
         '</div>' +
         '</div>' +
@@ -211,9 +211,9 @@
           '<tr title="' + this.summary + '" data-id="' + this.id + '" data-price="' + this.price + '">' +
           // '<td class="text-center" style="width: 30px;"><img width="30px" height="30px" src="' + this.image + '"/></td>' +
           '<td>' + this.name + '</td>' +
-          '<td title="Unit Price">Rp' + this.price + '</td>' +
+          '<td title="Unit Price">Rp' + this.price.toLocaleString('id-ID') + '</td>' +
           '<td title="Quantity"><input type="number" min="1" style="width: 70px;" class="' + classProductQuantity + '" value="' + this.quantity + '"/></td>' +
-          '<td title="Total" class="' + classProductTotal + '">Rp' + total + '</td>' +
+          '<td title="Total" class="' + classProductTotal + '">Rp' + total.toLocaleString('id-ID') + '</td>' +
           '<td title="Remove from Cart" class="text-center" style="width: 30px;"><a href="javascript:void(0);" class="btn btn-xs btn-danger ' + classProductRemove + '">X</a></td>' +
           '</tr>'
         );
@@ -262,7 +262,7 @@
       $("#" + idGrandTotal).text("Rp" + ProductManager.getTotalPrice());
     }
     var showDiscountPrice = function(){
-      $("#" + idDiscountPrice).text("Rp" + options.getDiscountPrice(ProductManager.getAllProducts(), ProductManager.getTotalPrice(), ProductManager.getTotalQuantity()));
+      $("#" + idDiscountPrice).text("Rp" + (options.getDiscountPrice(ProductManager.getAllProducts(), ProductManager.getTotalPrice(), ProductManager.getTotalQuantity())).toLocaleString('id-ID') );
     }
 
     /*
@@ -289,7 +289,7 @@
       var id = $(this).closest("tr").data("id");
       var quantity = $(this).val();
 
-      $(this).parent("td").next("." + classProductTotal).text("Rp" + price * quantity);
+      $(this).parent("td").next("." + classProductTotal).text("Rp" + (price * quantity).toLocaleString('id-ID'));
       ProductManager.updatePoduct(id, quantity);
 
       $cartBadge.text(ProductManager.getTotalQuantity());

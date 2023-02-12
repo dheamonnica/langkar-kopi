@@ -139,7 +139,7 @@
                            </div>
                            <div class="mid-2">
                               <p><em class="item_price">Rp.
-                                    <?= _ent($produk->harga); ?>
+                                    <?= _ent(number_format($produk->harga, 0, '.', '.')); ?>
                                  </em></p>
 
                               <div class="clearfix"></div>
@@ -157,76 +157,6 @@
                   </div>
                <?php endforeach; ?>
 
-               <div class=" con-w3l">
-                  <?php foreach ($produks as $produk): ?>
-                     <div class="col-md-3 pro-1">
-                        <div class="col-m">
-                           <a href="#" data-toggle="modal" data-target="#myModal17" class="offer-img">
-                              <img src="<?= BASE_URL . 'uploads/produk/' . $produk->photo; ?>"
-                                 class="img-responsive" alt="">
-                           </a>
-                           <div class="mid-1">
-                              <div class="women">
-                                 <h6>
-                                    <?= _ent($produk->nama_produk); ?>
-                                 </h6>
-                              </div>
-                              <div class="mid-2">
-                                 <p><em class="item_price">Rp.
-                                       <?= _ent($produk->harga); ?>
-                                    </em></p>
-
-                                 <div class="clearfix"></div>
-                              </div>
-                              <div class="add add-2">
-                                 <button class="btn btn-danger my-cart-btn my-cart-b"
-                                    data-id="<?= _ent($produk->id); ?>"
-                                    data-name="<?= _ent($produk->nama_produk); ?>" data-summary="summary 1"
-                                    data-price="<?= _ent($produk->harga); ?>" data-quantity="1"
-                                    data-image="<?= BASE_URL . 'uploads/produk/' . $produk->photo; ?>">Add to
-                                    Cart</button>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  <?php endforeach; ?>
-
-                  <div class=" con-w3l">
-                     <?php foreach ($produks as $produk): ?>
-                        <div class="col-md-3 pro-1">
-                           <div class="col-m">
-                              <a href="#" data-toggle="modal" data-target="#myModal17" class="offer-img">
-                                 <img src="<?= BASE_URL . 'uploads/produk/' . $produk->photo; ?>"
-                                    class="img-responsive" alt="">
-                              </a>
-                              <div class="mid-1">
-                                 <div class="women">
-                                    <h6>
-                                       <?= _ent($produk->nama_produk); ?>
-                                    </h6>
-                                 </div>
-                                 <div class="mid-2">
-                                    <p><em class="item_price">Rp.
-                                          <?= _ent($produk->harga); ?>
-                                       </em></p>
-
-                                    <div class="clearfix"></div>
-                                 </div>
-                                 <div class="add add-2">
-                                    <button class="btn btn-danger my-cart-btn my-cart-b"
-                                       data-id="<?= _ent($produk->id); ?>"
-                                       data-name="<?= _ent($produk->nama_produk); ?>" data-summary="summary 1"
-                                       data-price="<?= _ent($produk->harga); ?>" data-quantity="1"
-                                       data-image="<?= BASE_URL . 'uploads/produk/' . $produk->photo; ?>">Add to
-                                       Cart</button>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     <?php endforeach; ?>
-                     <div class="clearfix"></div>
-                  </div>
-               </div>
             </div>
          </div>
          <!--footer-->
