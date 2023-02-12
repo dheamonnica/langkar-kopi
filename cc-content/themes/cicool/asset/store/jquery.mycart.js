@@ -93,10 +93,12 @@
         name: name,
         summary: summary,
         price: price,
+        total: price * quantity,
         quantity: quantity,
         image: image
       });
       setAllProducts(products);
+      console.log(products, 'products')
     };
 
     /*
@@ -196,6 +198,7 @@
     var $cartIcon = $("." + options.classCartIcon);
     var $cartBadge = $("." + options.classCartBadge);
     var classProductQuantity = options.classProductQuantity;
+    var classProductSummary = options.classProductSummary;
     var classProductRemove = options.classProductRemove;
     var classCheckoutCart = options.classCheckoutCart;
 
@@ -205,6 +208,7 @@
     var idEmptyCartMessage = 'my-cart-empty-message';
     var idDiscountPrice = 'my-cart-discount-price';
     var classProductTotal = 'my-product-total';
+    var classProductTotalSummary = 'my-product-total-summary';
     var classAffixMyCartIcon = 'my-cart-icon-affix';
 
 
@@ -254,6 +258,12 @@
           '<td title="Quantity"><input type="number" min="1" style="width: 70px;" class="' + classProductQuantity + '" value="' + this.quantity + '"/></td>' +
           '<td title="Total" class="text-right ' + classProductTotal + '">' + options.currencySymbol + (total).toLocaleString('id-ID') + '</td>' +
           '<td title="Remove from Cart" class="text-center" style="width: 30px;"><a href="javascript:void(0);" class="btn btn-xs btn-danger ' + classProductRemove + '">X</a></td>' +
+          '</tr>' +
+          '<tr>' +
+          // '<td><strong>Nama Customer</strong></td>' +
+          // '<td title="Quantity"><input type="text" style="width: 100px;" class="' + classProductSummary + '"/></td>' +
+          // '<td title="Quantity"><input type="text" style="width: 100px;" class="' + classProductSummary + '"/></td>' +
+          // '<td title="Total" class="text-right ' + classProductTotalSummary + '">' + this.summary + '</td>' +
           '</tr>'
         );
       });
@@ -265,6 +275,8 @@
         '<td></td>' +
         '<td></td>' +
         '<td class="text-right"><strong id="' + idGrandTotal + '"></strong></td>' +
+        '<td></td>' +
+        '<tr>' +
         '<td></td>' +
         '</tr>' :
         '<div class="alert alert-danger" role="alert" id="' + idEmptyCartMessage + '">Your cart is empty</div>'
@@ -293,6 +305,10 @@
     };
     var updateCart = function () {
       $.each($("." + classProductQuantity), function () {
+        var id = $(this).closest("tr").data("id");
+        ProductManager.updatePoduct(id, $(this).val());
+      });
+      $.each($("." + classProductSummary), function () {
         var id = $(this).closest("tr").data("id");
         ProductManager.updatePoduct(id, $(this).val());
       });
@@ -330,6 +346,12 @@
       $cartBadge.text(ProductManager.getTotalQuantity());
       showGrandTotal();
       showDiscountPrice();
+    });
+
+    $(document).on("input", "." + classProductSummary, function () {
+      var summary = $(this).val();
+
+      $(this).parent("td").next("." + classProductTotalSummary).text(summary);
     });
 
     $(document).on('keypress', "." + classProductQuantity, function (evt) {
@@ -370,6 +392,12 @@
 
       var id = $target.data('id');
       var name = $target.data('name');
+      // const summary = $("input.classProductSummary")
+      // $(document).on("input", "." + classProductSummary, function () {
+      //   const summary = $(this).val();
+  
+      //   // $(this).parent("td").next("." + classProductTotalSummary).text(summary);
+      // });
       var summary = $target.data('summary');
       var price = $target.data('price');
       var quantity = $target.data('quantity');
