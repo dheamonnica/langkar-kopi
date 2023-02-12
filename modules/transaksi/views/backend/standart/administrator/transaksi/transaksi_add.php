@@ -25,11 +25,11 @@
     </style>
 <section class="content-header">
     <h1>
-        Kategori        <small><?= cclang('new', ['Kategori']); ?> </small>
+        Transaksi        <small><?= cclang('new', ['Transaksi']); ?> </small>
     </h1>
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class=""><a href="<?= admin_site_url('/kategori'); ?>">Kategori</a></li>
+        <li class=""><a href="<?= admin_site_url('/transaksi'); ?>">Transaksi</a></li>
         <li class="active"><?= cclang('new'); ?></li>
     </ol>
 </section>
@@ -43,14 +43,14 @@
                             <div class="widget-user-image">
                                 <img class="img-circle" src="<?= BASE_ASSET; ?>/img/add2.png" alt="User Avatar">
                             </div>
-                            <h3 class="widget-user-username">Kategori</h3>
-                            <h5 class="widget-user-desc"><?= cclang('new', ['Kategori']); ?></h5>
+                            <h3 class="widget-user-username">Transaksi</h3>
+                            <h5 class="widget-user-desc"><?= cclang('new', ['Transaksi']); ?></h5>
                             <hr>
                         </div>
                         <?= form_open('', [
-                            'name' => 'form_kategori',
+                            'name' => 'form_transaksi',
                             'class' => 'form-horizontal form-step',
-                            'id' => 'form_kategori',
+                            'id' => 'form_transaksi',
                             'enctype' => 'multipart/form-data',
                             'method' => 'POST'
                         ]); ?>
@@ -58,13 +58,73 @@
                         $user_groups = $this->model_group->get_user_group_ids();
                         ?>
 
-                        <div class="form-group group-nama_kategori ">
-                            <label for="nama_kategori" class="col-sm-2 control-label">Nama Kategori                                <i class="required">*</i>
+                        <div class="form-group group-produk_id ">
+                            <label for="produk_id" class="col-sm-2 control-label">Produk Id                                <i class="required">*</i>
                                 </label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" name="nama_kategori" id="nama_kategori" placeholder="Nama Kategori" value="<?= set_value('nama_kategori'); ?>">
+                                <input type="number" class="form-control" name="produk_id" id="produk_id" placeholder="Produk Id" value="<?= set_value('produk_id'); ?>">
                                 <small class="info help-block">
-                                    <b>Input Nama Kategori</b> Max Length : 255.</small>
+                                    <b>Input Produk Id</b> Max Length : 11.</small>
+                            </div>
+                        </div>
+                    
+
+    <div class="form-group group-harga ">
+                            <label for="harga" class="col-sm-2 control-label">Harga                                <i class="required">*</i>
+                                </label>
+                            <div class="col-sm-8">
+                                <input type="number" class="form-control" name="harga" id="harga" placeholder="Harga" value="<?= set_value('harga'); ?>">
+                                <small class="info help-block">
+                                    <b>Input Harga</b> Max Length : 12.</small>
+                            </div>
+                        </div>
+                    
+
+    <div class="form-group group-qty ">
+                            <label for="qty" class="col-sm-2 control-label">Qty                                <i class="required">*</i>
+                                </label>
+                            <div class="col-sm-8">
+                                <input type="number" class="form-control" name="qty" id="qty" placeholder="Qty" value="<?= set_value('qty'); ?>">
+                                <small class="info help-block">
+                                    <b>Input Qty</b> Max Length : 12.</small>
+                            </div>
+                        </div>
+                    
+
+    <div class="form-group group-total ">
+                            <label for="total" class="col-sm-2 control-label">Total                                <i class="required">*</i>
+                                </label>
+                            <div class="col-sm-8">
+                                <input type="number" class="form-control" name="total" id="total" placeholder="Total" value="<?= set_value('total'); ?>">
+                                <small class="info help-block">
+                                    <b>Input Total</b> Max Length : 12.</small>
+                            </div>
+                        </div>
+                    
+
+    <div class="form-group group-nama_cust ">
+                            <label for="nama_cust" class="col-sm-2 control-label">Nama Cust                                <i class="required">*</i>
+                                </label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="nama_cust" id="nama_cust" placeholder="Nama Cust" value="<?= set_value('nama_cust'); ?>">
+                                <small class="info help-block">
+                                    <b>Input Nama Cust</b> Max Length : 255.</small>
+                            </div>
+                        </div>
+                    
+
+    <div class="form-group group-status ">
+                            <label for="status" class="col-sm-2 control-label">Status                                <i class="required">*</i>
+                                </label>
+                            <div class="col-sm-8">
+                                <select class="form-control chosen chosen-select" name="status" id="status" data-placeholder="Select Status">
+                                    <option value=""></option>
+                                    <option value="0">On Progress</option>
+                                    <option value="1">Done</option>
+                                                                    </select>
+                                <small class="info help-block">
+
+                                    </small>
                             </div>
                         </div>
                     
@@ -129,7 +189,7 @@
             },
             function(isConfirm) {
                 if (isConfirm) {
-                    window.location.href = BASE_URL + '/administrator/kategori';
+                    window.location.href = BASE_URL + '/administrator/transaksi';
                 }
             });
 
@@ -139,8 +199,8 @@
     $('.btn_save').click(function() {
         $('.message').fadeOut();
         
-    var form_kategori = $('#form_kategori');
-    var data_post = form_kategori.serializeArray();
+    var form_transaksi = $('#form_transaksi');
+    var data_post = form_transaksi.serializeArray();
     var save_type = $(this).attr('data-stype');
 
     data_post.push({
@@ -156,10 +216,9 @@
     
 
     $('.loading').show();
-    console.log(data_post, 'data_post')
 
     $.ajax({
-            url: BASE_URL + '/administrator/kategori/add_save',
+            url: BASE_URL + '/administrator/transaksi/add_save',
             type: 'POST',
             dataType: 'json',
             data: data_post,

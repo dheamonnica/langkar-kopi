@@ -128,8 +128,7 @@
                   <div class="col-md-3 pro-1">
                      <div class="col-m">
                         <a href="#" data-toggle="modal" data-target="#myModal17" class="offer-img">
-                           <img src="<?= BASE_URL . 'uploads/produk/' . $produk->photo; ?>" class="img-responsive"
-                              alt="">
+                           <img src="<?= BASE_URL . 'uploads/produk/' . $produk->photo; ?>" class="img-responsive" alt="">
                         </a>
                         <div class="mid-1">
                            <div class="women">
@@ -145,10 +144,9 @@
                               <div class="clearfix"></div>
                            </div>
                            <div class="add add-2">
-                              <button class="btn btn-danger my-cart-btn my-cart-b"
-                                 data-id="<?= _ent($produk->id); ?>" data-name="<?= _ent($produk->nama_produk); ?>"
-                                 data-summary="summary 1" data-price="<?= _ent($produk->harga); ?>"
-                                 data-quantity="1"
+                              <button class="btn btn-danger my-cart-btn my-cart-b" data-id="<?= _ent($produk->id); ?>"
+                                 data-name="<?= _ent($produk->nama_produk); ?>" data-summary="summary 1"
+                                 data-price="<?= _ent($produk->harga); ?>" data-quantity="1"
                                  data-image="<?= BASE_URL . 'uploads/produk/' . $produk->photo; ?>">Add to
                                  Cart</button>
                            </div>
@@ -165,7 +163,8 @@
 
                <div class="clearfix"></div>
                <div class="footer-bottom">
-                  <h2><a href="index-2.html"></b>Langkar Kopi<span>𝓖𝓸𝓸𝓭 𝓬𝓸𝓯𝓯𝓮𝓮 𝓖𝓸𝓸𝓭 𝓿𝓲𝓫𝓮</span></a></h2>
+                  <h2><a href="index-2.html"></b>Langkar Kopi<span>𝓖𝓸𝓸𝓭 𝓬𝓸𝓯𝓯𝓮𝓮 𝓖𝓸𝓸𝓭 𝓿𝓲𝓫𝓮</span></a>
+                  </h2>
                   <ul class="bg-ig social-fo">
                      <li><a href="#" class=" face"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
                      <li><a href="#" class=" face"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
@@ -173,7 +172,8 @@
                   </ul>
                   <div class=" address">
                      <div class="col-md-12 fo-grid1">
-                        <p><i class="fa fa-home" aria-hidden="true"></i>Jl. Nangka Raya No.10, RT.11/RW.4, Tj. Bar., Kec. Jagakarsa, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12530</p>
+                        <p><i class="fa fa-home" aria-hidden="true"></i>Jl. Nangka Raya No.10, RT.11/RW.4, Tj. Bar.,
+                           Kec. Jagakarsa, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12530</p>
                      </div>
                      <div class="clearfix"></div>
                   </div>
@@ -213,6 +213,87 @@
                   checkoutCart: function (products) {
                      $.each(products, function () {
                         console.log(this);
+                        // $('.message').fadeOut();
+
+                        // var form_kategori = $('#form_kategori');
+                        // var data_post = form_kategori.serializeArray();
+                        // var save_type = $(this).attr('data-stype');
+
+                        // data_post.push({
+                        //    name: 'save_type',
+                        //    value: save_type
+                        // });
+
+                        // data_post.push({
+                        //    name: 'event_submit_and_action',
+                        //    value: window.event_submit_and_action
+                        // });
+
+
+
+                        // $('.loading').show();
+
+                        $.ajax({
+                           url: '<?= base_url('administrator/transaksi/add_save') ?>',
+                           type: 'POST',
+                           dataType: 'json',
+                           data: this,
+                        })
+                           .done(function (res) {
+                              // $('form').find('.form-group').removeClass('has-error');
+                              // $('.steps li').removeClass('error');
+                              // $('form').find('.error-input').remove();
+                              if (res.success) {
+
+                                 // if (save_type == 'back') {
+                                 //    window.location.href = res.redirect;
+                                 //    return;
+                                 // }
+
+                                 // $('.message').printMessage({
+                                 //    message: 'success'
+                                 // });
+                                 // $('.message').fadeIn();
+                                 // resetForm();
+                                 // $('.chosen option').prop('selected', false).trigger('chosen:updated');
+
+                              } else {
+                        //          if (res.errors) {
+
+                        //             $.each(res.errors, function (index, val) {
+                        //                $('form #' + index).parents('.form-group').addClass('has-error');
+                        //                $('form #' + index).parents('.form-group').find('small').prepend(`
+                        //   <div class="error-input">` + val + `</div>
+                        //   `);
+                        //             });
+                        //             $('.steps li').removeClass('error');
+                        //             $('.content section').each(function (index, el) {
+                        //                if ($(this).find('.has-error').length) {
+                        //                   $('.steps li:eq(' + index + ')').addClass('error').find('a').trigger('click');
+                        //                }
+                        //             });
+                        //          }
+                        //          $('.message').printMessage({
+                        //             message: 'success',
+                        //             type: 'warning'
+                        //          });
+                              }
+
+                           })
+                           // .fail(function () {
+                           //    $('.message').printMessage({
+                           //       message: 'Error save data',
+                           //       type: 'warning'
+                           //    });
+                           // })
+                           // .always(function () {
+                           //    $('.loading').hide();
+                           //    $('html, body').animate({
+                           //       scrollTop: $(document).height()
+                           //    }, 2000);
+                           // });
+
+                        // return false;
                      });
                   },
                   clickOnAddToCart: function ($addTocart) {
