@@ -103,6 +103,12 @@ class Setting extends Admin
 			set_option('google_id', $this->input->post('google_id'));
 			set_option('google_secret', $this->input->post('google_secret'));
 
+			set_option('slogan', $this->input->post('slogan'));
+			set_option('address', $this->input->post('address'));
+			set_option('facebook', $this->input->post('facebook'));
+			set_option('twitter', $this->input->post('twitter'));
+			set_option('instagram', $this->input->post('instagram'));
+
 			set_cookie('language', $this->input->post('language'), (60 * 60 * 24) * 365);
 
 

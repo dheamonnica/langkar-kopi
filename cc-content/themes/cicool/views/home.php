@@ -70,19 +70,25 @@
             <div class="nav-top">
                <nav class="navbar navbar-default">
                   <div class="navbar-header nav_2">
-                     <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse"
+                     <!-- <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse"
                         data-target="#bs-megadropdown-tabs">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
-                     </button>
+                     </button> -->
                   </div>
 
                </nav>
                <div class="cart">
                   <span class="fa fa-shopping-cart my-cart-icon"><span
                         class="badge badge-notify my-cart-badge"></span></span>
+
+               </div>
+               <div class="cart">
+                  <a href="<?= base_url('administrator/login') ?>"><span class="fa fa-sign-in"
+                        style="position: absolute !important;font-size: 1.5em;color: #039445;"></span></a>
+
                </div>
                <div class="clearfix"></div>
             </div>
@@ -145,9 +151,10 @@
                            </div>
                            <div class="add add-2">
                               <button class="btn btn-danger my-cart-btn my-cart-b" data-id="<?= _ent($produk->id); ?>"
-                                 data-name="<?= _ent($produk->nama_produk); ?>" data-summary="<?= get_user_data('email') ?>"
-                                 data-price="<?= _ent($produk->harga); ?>" data-quantity="1"
-                                 data-image="<?= BASE_URL . 'uploads/produk/' . $produk->photo; ?>">Add to
+                                 data-name="<?= _ent($produk->nama_produk); ?>"
+                                 data-summary="<?= get_user_data('email') ?>" data-price="<?= _ent($produk->harga); ?>"
+                                 data-quantity="1" data-image="<?= BASE_URL . 'uploads/produk/' . $produk->photo; ?>">Add
+                                 to
                                  Cart</button>
                            </div>
                         </div>
@@ -163,23 +170,31 @@
 
                <div class="clearfix"></div>
                <div class="footer-bottom">
-                  <h2><a href="index-2.html"></b>Langkar Kopi<span>𝓖𝓸𝓸𝓭 𝓬𝓸𝓯𝓯𝓮𝓮 𝓖𝓸𝓸𝓭 𝓿𝓲𝓫𝓮</span></a>
+                  <h2><a href="index-2.html"></b>
+                        <?= get_option('site_name'); ?><span>
+                           <?= get_option('slogan'); ?>
+                        </span>
+                     </a>
                   </h2>
                   <ul class="bg-ig social-fo">
-                     <li><a href="#" class=" face"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                     <li><a href="#" class=" face"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                     <li><a href="#" class=" face"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                     <li><a href="<?= get_option('instagram'); ?>"><i class="fa fa-instagram"
+                              aria-hidden="true"></i></a></li>
+                     <li><a href="<?= get_option('site_name'); ?>"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                     </li>
+                     <li><a href="<?= get_option('twitter'); ?>"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                     </li>
                   </ul>
                   <div class=" address">
                      <div class="col-md-12 fo-grid1">
-                        <p><i class="fa fa-home" aria-hidden="true"></i>Jl. Nangka Raya No.10, RT.11/RW.4, Tj. Bar.,
-                           Kec. Jagakarsa, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12530</p>
+                        <p><i class="fa fa-home" aria-hidden="true"></i>
+                           <?= get_option('address'); ?>
+                        </p>
                      </div>
                      <div class="clearfix"></div>
                   </div>
                </div>
                <div class="copy-right">
-                  <p> &copy; 2022</p>
+                  <p> &copy; 2022. All rights reserved.</p>
                </div>
             </div>
          </div>

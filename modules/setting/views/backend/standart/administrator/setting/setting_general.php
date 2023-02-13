@@ -84,6 +84,36 @@
                       </div>
 
                       <div class="col-sm-12">
+                        <label><?= cclang('address'); ?> <span class="required">*</span></label>
+                        <input type="text" class="form-control" name="address" id="address" value="<?= get_option('address'); ?>">
+                        <small class="info help-block">The address name.</small>
+                      </div>
+
+                      <div class="col-sm-12">
+                        <label><?= cclang('slogan'); ?> <span class="required">*</span></label>
+                        <input type="text" class="form-control" name="slogan" id="slogan" value="<?= get_option('slogan'); ?>">
+                        <small class="info help-block">The slogan name.</small>
+                      </div>
+
+                      <div class="col-sm-12">
+                        <label><?= cclang('facebook'); ?> <span class="required">*</span></label>
+                        <input type="text" class="form-control" name="facebook" id="facebook" value="<?= get_option('facebook'); ?>">
+                        <small class="info help-block">The fb name.</small>
+                      </div>
+
+                      <div class="col-sm-12">
+                        <label><?= cclang('twitter'); ?> <span class="required">*</span></label>
+                        <input type="text" class="form-control" name="twitter" id="twitter" value="<?= get_option('twitter'); ?>">
+                        <small class="info help-block">The twitter name.</small>
+                      </div>
+                      
+                      <div class="col-sm-12">
+                        <label><?= cclang('instagram'); ?> <span class="required">*</span></label>
+                        <input type="text" class="form-control" name="instagram" id="instagram" value="<?= get_option('instagram'); ?>">
+                        <small class="info help-block">The instagram name.</small>
+                      </div>
+
+                      <div class="col-sm-12">
                         <label><?= cclang('default_landing_page'); ?> <span class="required">*</span></label>
                         <div class="row">
                           <div class="col-md-6 ">

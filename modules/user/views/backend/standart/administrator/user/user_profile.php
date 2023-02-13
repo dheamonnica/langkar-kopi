@@ -22,7 +22,7 @@
             <div class="box box-widget widget-user">
 
               <div class="widget-user-header profile ">
-                <h3 class="widget-user-username text-white"><?= _ent(ucwords($user->full_name)); ?></h3>
+                <!-- <h3 class="widget-user-username text-white"><?= _ent(ucwords($user->full_name)); ?></h3> -->
                 <h5 class="widget-user-desc text-white"><?= _ent($user->username); ?></h5>
               </div>
               <div class="widget-user-image">
@@ -67,10 +67,10 @@
                     <span class="pull-right badge bg-blue">Active</span></a>
                   <?php endif; ?>
                   </li>
-                  <li><a href="#"><i class='fa  fa-safari  color-orange'></i> Last Login <span class="pull-right "><?= _ent($user->last_login); ?></span></a></li>
+                  <!-- <li><a href="#"><i class='fa  fa-safari  color-orange'></i> Last Login <span class="pull-right "><?= _ent($user->last_login); ?></span></a></li>
                   <li><a href="#"><i class='fa fa-history color-orange'></i> Last Activity <span class="pull-right "><?= _ent($user->last_activity); ?></span></a></li>
                   <li><a href="#"><i class='fa fa-calendar-check-o  color-orange'></i> Date Created <span class="pull-right "><?= _ent($user->date_created); ?></span></a></li>
-                  <li><a href="#"><i class='fa fa-chrome color-orange'></i> IP Address <span class="pull-right "><?= _ent($user->ip_address); ?></span></a></li>
+                  <li><a href="#"><i class='fa fa-chrome color-orange'></i> IP Address <span class="pull-right "><?= _ent($user->ip_address); ?></span></a></li> -->
                 </ul>
               </div>
             </div>
