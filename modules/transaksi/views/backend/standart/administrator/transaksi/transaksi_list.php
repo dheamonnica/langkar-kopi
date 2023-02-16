@@ -89,6 +89,7 @@ jQuery(document).ready(domo);
                             <option <?= $this->input->get('f') == 'total' ? 'selected' :''; ?> value="total">Total</option>
                             <option <?= $this->input->get('f') == 'nama_cust' ? 'selected' :''; ?> value="nama_cust">Nama Cust</option>
                             <option <?= $this->input->get('f') == 'status' ? 'selected' :''; ?> value="status">Status</option>
+                            <option <?= $this->input->get('f') == 'payment' ? 'selected' :''; ?> value="payment">Payment</option>
                             <option <?= $this->input->get('f') == 'kasir_id' ? 'selected' :''; ?> value="kasir_id">Kasir Id</option>
                             <option <?= $this->input->get('f') == 'created_at' ? 'selected' :''; ?> value="created_at">Created At</option>
                             <option <?= $this->input->get('f') == 'nama_produk' ? 'selected' :''; ?> value="nama_produk">Nama Produk</option>
@@ -114,7 +115,7 @@ jQuery(document).ready(domo);
                   <div class="table-responsive"> 
 
                   <br>
-                  <table class="table table-bordered table-striped dataTable">
+                  <table class="table table-bordered table-striped dataTable" id="table">
                      <thead>
                         <tr class="">
                                                      <th>
@@ -126,8 +127,10 @@ jQuery(document).ready(domo);
                            <th data-field="total"data-sort="1" data-primary-key="0"> <?= cclang('total') ?></th>
                            <th data-field="nama_cust"data-sort="1" data-primary-key="0"> <?= cclang('nama_cust') ?></th>
                            <th data-field="status"data-sort="1" data-primary-key="0"> <?= cclang('status') ?></th>
+                           <th data-field="payment"data-sort="1" data-primary-key="0"> <?= cclang('payment') ?></th>
                            <th data-field="kasir_id"data-sort="1" data-primary-key="0"> <?= cclang('kasir_id') ?></th>
                            <th data-field="created_at"data-sort="1" data-primary-key="0"> <?= cclang('created_at') ?></th>
+                           <th data-field="updated_at"data-sort="1" data-primary-key="0"> <?= cclang('updated_at') ?></th>
                            <th data-field="nama_produk"data-sort="1" data-primary-key="0"> <?= cclang('nama_produk') ?></th>
                            <th>Action</th>                        </tr>
                      </thead>
@@ -143,17 +146,20 @@ jQuery(document).ready(domo);
                            <td><span class="list_group-qty"><?= _ent($transaksi->qty); ?></span></td> 
                            <td><span class="list_group-total"><?= _ent($transaksi->total); ?></span></td> 
                            <td><span class="list_group-nama_cust"><?= _ent($transaksi->nama_cust); ?></span></td> 
-                           <td><span class="list_group-status"><?= _ent($transaksi->status); ?></span></td> 
+                           <!-- <td><span class="list_group-status"><?= _ent($transaksi->status); ?></span></td>  -->
+                           <td><input type="checkbox" name="status" data-user-id="<?= $transaksi->id; ?>" class="transaksi-switch-status" <?= $transaksi->status === 'done' ? '' : 'checked'; ?>></td>
+                           <td><input type="checkbox" name="payment" data-user-id="<?= $transaksi->id; ?>" class="payment-switch-status" <?= $transaksi->payment === 'paid' ? '' : 'checked'; ?>></td>
                            <td><span class="list_group-kasir_id"><?= _ent($transaksi->kasir_id); ?></span></td> 
                            <td><span class="list_group-created_at"><?= _ent($transaksi->created_at); ?></span></td> 
+                           <td><span class="list_group-updated_at"><?= _ent($transaksi->updated_at); ?></span></td> 
                            <td><span class="list_group-nama_produk"><?= _ent($transaksi->nama_produk); ?></span></td> 
                            <td width="200">
                             
                                                               <?php is_allowed('transaksi_view', function() use ($transaksi){?>
-                                                              <a href="<?= site_url('administrator/transaksi/view/' . $transaksi->id); ?>" class="label-default"><i class="fa fa-newspaper-o"></i> <?= cclang('view_button'); ?>
+                                                              <!-- <a href="<?= site_url('administrator/transaksi/view/' . $transaksi->id); ?>" class="label-default"><i class="fa fa-newspaper-o"></i> <?= cclang('view_button'); ?> -->
                               <?php }) ?>
                               <?php is_allowed('transaksi_update', function() use ($transaksi){?>
-                              <a href="<?= site_url('administrator/transaksi/edit/' . $transaksi->id); ?>" class="label-default"><i class="fa fa-edit "></i> <?= cclang('update_button'); ?></a>
+                              <!-- <a href="<?= site_url('administrator/transaksi/edit/' . $transaksi->id); ?>" class="label-default"><i class="fa fa-edit "></i> <?= cclang('update_button'); ?></a> -->
                               <?php }) ?>
                               <?php is_allowed('transaksi_delete', function() use ($transaksi){?>
                               <a href="javascript:void(0);" data-href="<?= site_url('administrator/transaksi/delete/' . $transaksi->id); ?>" class="label-default remove-data"><i class="fa fa-close"></i> <?= cclang('remove_button'); ?></a>
@@ -282,4 +288,166 @@ jQuery(document).ready(domo);
     });
     initSortable('transaksi', $('table.dataTable'));
   }); /*end doc ready*/
+</script>
+
+<script>
+   $(document).ready(function () {
+
+"use strict";
+$('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
+        checkboxClass: 'icheckbox_minimal-red',
+        radioClass: 'iradio_minimal-red'
+    });
+
+    $('.transaksi-switch-status').switchButton({
+        labels_placement: 'right',
+        on_label: 'progress',
+        off_label: 'done'
+    });
+
+    $(document).on('change', 'input.transaksi-switch-status', function () {
+        var status = 'progress';
+        var id = $(this).attr('data-user-id');
+        var data = [];
+
+        if ($(this).prop('checked')) {
+            status = 'done';
+        }
+
+        data.push({
+            name: csrf,
+            value: token
+        });
+        data.push({
+            name: 'status',
+            value: status
+        });
+        data.push({
+            name: 'id',
+            value: id
+        });
+
+        $.ajax({
+            url: BASE_URL + '/administrator/transaksi/set_status',
+            type: 'POST',
+            dataType: 'JSON',
+            data: data,
+        })
+            .done(function (data) {
+                if (data.success) {
+                    toastr['success'](data.message);
+                    location.reload();
+                } else {
+                    toastr['warning'](data.message);
+                }
+
+            })
+            .fail(function () {
+                toastr['error']('Error update status');
+            });
+    });
+
+}); /*end doc ready*/
+</script>
+
+<script>
+   $(document).ready(function () {
+
+"use strict";
+$('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
+        checkboxClass: 'icheckbox_minimal-red',
+        radioClass: 'iradio_minimal-red'
+    });
+
+    $('.payment-switch-status').switchButton({
+        labels_placement: 'right',
+        on_label: 'unpaid',
+        off_label: 'paid'
+    });
+
+    $(document).on('change', 'input.payment-switch-status', function () {
+        var payment = 'unpaid';
+        var id = $(this).attr('data-user-id');
+        var data = [];
+
+        if ($(this).prop('checked')) {
+            payment = 'paid';
+        }
+
+        data.push({
+            name: csrf,
+            value: token
+        });
+        data.push({
+            name: 'payment',
+            value: payment
+        });
+        data.push({
+            name: 'id',
+            value: id
+        });
+
+        $.ajax({
+            url: BASE_URL + '/administrator/transaksi/set_status_payment',
+            type: 'POST',
+            dataType: 'JSON',
+            data: data,
+        })
+            .done(function (data) {
+                if (data.success) {
+                    toastr['success'](data.message);
+                    location.reload();
+                } else {
+                    toastr['warning'](data.message);
+                }
+
+            })
+            .fail(function () {
+                toastr['error']('Error update status payment');
+            });
+    });
+
+}); /*end doc ready*/
+</script>
+
+<script>
+   $(document).ready(function() {
+    selesai();
+});
+ 
+function selesai() {
+	setTimeout(function() {
+		// update();
+		// selesai();
+      location.reload();
+	}, 10000);
+}
+
+// function update() {
+// 	$.getJSON(BASE_URL + '/administrator/transaksi/get', function(data) {
+// 		$("#table").empty();
+// 		var no = 1;
+// 		$.each(data.result, function() {
+// 			$("#table").append("<tr><td>"+(no++)+"</td><td>"+this['produk_id']+"</td><td>"+this['harga']+"</td></tr>");
+// 		});
+// 	});
+// $.ajax({
+//             url: BASE_URL + '/administrator/transaksi/get',
+//             type: 'GET',
+//             dataType: 'JSON',
+//             data: data,
+//         })
+//             .done(function (data) {
+//                 if (data.success) {
+//                     toastr['success'](data.message);
+//                     location.reload();
+//                 } else {
+//                     toastr['warning'](data.message);
+//                 }
+
+//             })
+//             .fail(function () {
+//                 toastr['error']('Error update status');
+//             });
+// }
 </script>

@@ -105,6 +105,23 @@ class Model_dashboard extends MY_Model {
 		return $this->db->get_where($this->table_name, ['slug' => $slug])->row();
 	}
 
+	public function getincome($date)
+	{
+		// $query = $this->db->query('SELECT COUNT(total) as total FROM `transaksi` WHERE order_payment="'+ $date + '"');
+		$query = $this->db->query('SELECT SUM(total) as total FROM `transaksi` WHERE order_payment="2023-02-16"');
+
+		return $query->result();
+		
+	}
+
+	public function getProductSold($date)
+	{
+		// $query = $this->db->query('SELECT COUNT(qty) as product FROM `transaksi` WHERE order_payment="'+ $date + '"');
+		$query = $this->db->query('SELECT COUNT(qty) as product FROM `transaksi` WHERE order_payment="2023-02-16"');
+
+		return $query->result();
+	}
+
 
 }
 

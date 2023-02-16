@@ -48,6 +48,28 @@ class Transaksi extends Admin
 		$this->template->title('Transaksi List');
 		$this->render('backend/standart/administrator/transaksi/transaksi_list', $this->data);
 	}
+
+	public function get($offset = 0)
+	{
+		$this->is_allowed('transaksi_list');
+
+		$filter = $this->input->get('q');
+		$field 	= $this->input->get('f');
+
+		$this->data['transaksis'] = $this->model_transaksi->get($filter, $field, $this->limit_page, $offset);
+		$this->data['transaksi_counts'] = $this->model_transaksi->count_all($filter, $field);
+
+		$config = [
+			'base_url'     => 'administrator/transaksi/index/',
+			'total_rows'   => $this->data['transaksi_counts'],
+			'per_page'     => $this->limit_page,
+			'uri_segment'  => 4,
+		];
+
+		$this->data['pagination'] = $this->pagination($config);
+
+		$this->render($this->data);
+	}
 	
 	/**
 	* Add new transaksis
@@ -104,9 +126,11 @@ class Transaksi extends Admin
 				'qty' => $this->input->post('quantity'),
 				'total' => $this->input->post('total'),
 				'nama_cust' => $this->input->post('summary'),
-				'status' => 'on-progress',
+				'status' => 'progress',
+				'payment' => 'unpaid',
 				'kasir_id' => '',
 				'created_at' => date('Y-m-d H:i:s'),
+				'order_date' => date('Y-m-d'),
 			];
 
 			
@@ -208,14 +232,19 @@ class Transaksi extends Admin
 		if ($this->form_validation->run()) {
 		
 			$save_data = [
-				// 'produk_id' => $this->input->post('produk_id'),
-				// 'harga' => $this->input->post('harga'),
-				// 'qty' => $this->input->post('qty'),
+				// 'produk_id' => $this->input->post('id'),
+				// 'nama_produk' => $this->input->post('name'),
+				// 'harga' => $this->input->post('price'),
+				// 'qty' => $this->input->post('quantity'),
 				// 'total' => $this->input->post('total'),
-				// 'status' => $this->input->post('status'),
+				// 'nama_cust' => $this->input->post('summary'),
+				'status' => 'done',
+				'payment' => 'paid',
 				'kasir_id' => get_user_data('username'),
+				// 'created_at' => date('Y-m-d H:i:s'),
+				// 'order_date' => date('Y-m-d'),
 				'updated_at' => date('Y-m-d H:i:s'),
-				// 'nama_produk' => $this->input->post('nama_produk'),
+				'order_payment' => date('Y-m-d'),
 			];
 
 			
@@ -265,6 +294,76 @@ class Transaksi extends Admin
 
 		$this->response($this->data);
 	}
+
+	/**
+	* Set status user
+	*
+	* @return JSON
+	*/
+	public function set_status()
+	{
+		if (!$this->is_allowed('transaksi_update', false)) {
+			return $this->response([
+				'success' => false,
+				'message' => cclang('sorry_you_do_not_have_permission_to_access')
+				]);
+		}
+		$status = $this->input->post('status');
+		$id = $this->input->post('id');
+
+		$update_status = $this->model_transaksi->change($id, [
+			'status' => $status == 'done' ? 'progress' : 'done',
+			'kasir_id' => get_user_data('username'),
+			// 'updated_at' => date('Y-m-d H:i:s'),
+		]);
+		
+		if ($update_status) {
+			$this->response = [
+				'success' => true,
+				'message' => 'Transaksi status updated',
+			];
+		} else {
+			$this->response = [
+				'success' => false,
+				'message' => cclang('data_not_change')
+			];
+		}
+
+		return $this->response($this->response);
+	}
+
+	public function set_status_payment()
+	{
+		if (!$this->is_allowed('transaksi_update', false)) {
+			return $this->response([
+				'success' => false,
+				'message' => cclang('sorry_you_do_not_have_permission_to_access')
+				]);
+		}
+		$payment = $this->input->post('payment');
+		$id = $this->input->post('id');
+
+		$update_payment = $this->model_transaksi->change($id, [
+			'payment' => $payment == 'paid' ? 'unpaid' : 'paid',
+			'kasir_id' => get_user_data('username'),
+			'updated_at' => date('Y-m-d H:i:s'),
+		]);
+		
+		if ($update_payment) {
+			$this->response = [
+				'success' => true,
+				'message' => 'Transaksi payment updated',
+			];
+		} else {
+			$this->response = [
+				'success' => false,
+				'message' => cclang('data_not_change')
+			];
+		}
+
+		return $this->response($this->response);
+	}
+
 	
 	/**
 	* delete Transaksis

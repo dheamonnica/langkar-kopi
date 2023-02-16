@@ -26,8 +26,12 @@ class Dashboard extends Admin
 			redirect('/', 'refresh');
 		}
 		$dashboards = $this->model_dashboard->get(null, null, $limit = 9999, $offset = 0);
+		$getIncome = $this->model_dashboard->getIncome(date('Y-m-d'));
+		$getProductSold = $this->model_dashboard->getProductSold(date('Y-m-d'));
 		$data = [
-			'dashboards' => $dashboards
+			'dashboards' => $dashboards,
+			'getIncome' => $getIncome,
+			'getProductSold' => $getProductSold,
 		];
 		$this->render('backend/standart/dashboard', $data);
 	}

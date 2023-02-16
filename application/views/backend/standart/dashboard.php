@@ -30,9 +30,9 @@
 
 <section class="content">
 	<div class="row">
-		<?php cicool()->eventListen('dashboard_content_top'); ?>
+		<!-- <?php cicool()->eventListen('dashboard_content_top'); ?> -->
 
-		<?php is_allowed('dashboard_update', function () { ?>
+		<!-- <?php is_allowed('dashboard_update', function () { ?>
 			<div class="col-md-3 col-sm-6 col-xs-12">
 				<div class="info-box button btn-new-dashboard">
 					<span class="info-box-icon bg-default">
@@ -59,13 +59,43 @@
 						</span>
 					</div>
 				</div>
-			</div>
-		<?php }) ?>
+			</div> -->
+		<!-- <?php }) ?> -->
 
 		<div class="col-md-12 ">
 		</div>
 
-		<?php foreach ($dashboards as $dashboard) : ?>
+		<div class="col-md-6 col-sm-6 col-xs-12">
+				<div class="info-box button btn-manage-widged">
+					<span class="info-box-icon bg-default">
+						<i class="fa fa-coffee">
+						</i>
+					</span>
+					<div class="info-box-content">
+						<span class="info-box-text">
+							<center>  <?= json_encode($getProductSold[0]->product, JSON_NUMERIC_CHECK) ?> Sold Products</center>
+						</span>
+					</div>
+				</div>
+			</div>
+
+		<div class="col-md-6 col-sm-6 col-xs-12">
+				<div class="info-box button btn-manage-widged">
+					<span class="info-box-icon bg-default">
+						<i class="fa fa-money">
+						</i>
+					</span>
+					<div class="info-box-content">
+						<span class="info-box-text">
+							<center>Rp. <?= number_format(json_encode($getIncome[0]->total, JSON_NUMERIC_CHECK), 0, ',', '.') ?> Total Income Today</center>
+
+
+						</span>
+					</div>
+				</div>
+			</div>
+
+		<!-- <?php foreach ($dashboards as $dashboard) : ?>
 			<div class="col-md-3 col-sm-6 col-xs-12">
 				<div class="info-box button" onclick="goUrl('administrator/dashboard/show/<?= $dashboard->slug ?>') ">
 					<span class="info-box-icon bg-aqua">
@@ -79,7 +109,7 @@
 					</div>
 				</div>
 			</div>
-		<?php endforeach; ?>
+		<?php endforeach; ?> -->
 
 	</div>
 
