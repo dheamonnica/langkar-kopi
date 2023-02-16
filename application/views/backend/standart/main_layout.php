@@ -225,8 +225,6 @@
   <script src="<?= BASE_ASSET ?>admin-lte/dist/js/adminlte.js"></script>
   <script src="<?= BASE_ASSET ?>js-scroll/script/jquery.jscrollpane.min.js"></script>
   <script src="<?= BASE_ASSET ?>jquery-switch-button/jquery.switchButton.js"></script>
-<script src="<?= theme_asset() ?>vendor/jquery/jquery.min.js"></script>
-  
   <script src="<?= BASE_ASSET ?>js/custom.js"></script>
 </body>
 

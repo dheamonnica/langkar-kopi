@@ -16,48 +16,49 @@ app()->cc_html->registerScriptFileBottom("
 
 app()->cc_html->registerCssFile(BASE_ASSET . "/jquery-switch-button/jquery.switchButton.css");
 
-cicool()->addTabSetting([
-    'id' => 'builder_enabled',
-    'label' => 'Disable Builder',
-    'icon' => 'fa fa-code',
-])->addTabContent([
-    'content' => ' 
-    <div class="col-md-6">
-        <div class="col-sm-12">
-            <label>Disable CRUD Builder</label><br>
-            <input type="checkbox" class="switch-button" name="enable_crud_builder" '.(get_option('enable_crud_builder') == 1 ? 'checked' : '').' id="enable_crud_builder" value="1">
-            <small class="info help-block">Disable CRUD module.</small>
-        </div>
+// cicool()->addTabSetting([
+//     'id' => 'builder_enabled',
+//     'label' => 'Disable Builder',
+//     'icon' => 'fa fa-code',
+// ])
+// ->addTabContent([
+//     'content' => ' 
+//     <div class="col-md-6">
+//         <div class="col-sm-12">
+//             <label>Disable CRUD Builder</label><br>
+//             <input type="checkbox" class="switch-button" name="enable_crud_builder" '.(get_option('enable_crud_builder') == 1 ? 'checked' : '').' id="enable_crud_builder" value="1">
+//             <small class="info help-block">Disable CRUD module.</small>
+//         </div>
 
-        <div class="col-sm-12">
-            <label>Disable API Builder </label><br>
-            <input type="checkbox" class="switch-button" name="enable_api_builder" '.(get_option('enable_api_builder') == 1 ? 'checked' : '').' id="enable_api_builder" value="1">
-            <small class="info help-block">Disable API module.</small>
-        </div>
+//         <div class="col-sm-12">
+//             <label>Disable API Builder </label><br>
+//             <input type="checkbox" class="switch-button" name="enable_api_builder" '.(get_option('enable_api_builder') == 1 ? 'checked' : '').' id="enable_api_builder" value="1">
+//             <small class="info help-block">Disable API module.</small>
+//         </div>
 
-        <div class="col-sm-12">
-            <label>Disable Form Builder </label><br>
-            <input type="checkbox" class="switch-button" name="enable_form_builder" '.(get_option('enable_form_builder') == 1 ? 'checked' : '').' id="enable_form_builder" value="1">
-            <small class="info help-block">Disable FORM module.</small>
-        </div>
+//         <div class="col-sm-12">
+//             <label>Disable Form Builder </label><br>
+//             <input type="checkbox" class="switch-button" name="enable_form_builder" '.(get_option('enable_form_builder') == 1 ? 'checked' : '').' id="enable_form_builder" value="1">
+//             <small class="info help-block">Disable FORM module.</small>
+//         </div>
 
-        <div class="col-sm-12">
-            <label>Disable Page Builder </label><br>
-            <input type="checkbox" class="switch-button" name="enable_page_builder" '.(get_option('enable_page_builder') == 1 ? 'checked' : '').' id="enable_page_builder" value="1">
-            <small class="info help-block">Disable Page module.</small>
-        </div>
+//         <div class="col-sm-12">
+//             <label>Disable Page Builder </label><br>
+//             <input type="checkbox" class="switch-button" name="enable_page_builder" '.(get_option('enable_page_builder') == 1 ? 'checked' : '').' id="enable_page_builder" value="1">
+//             <small class="info help-block">Disable Page module.</small>
+//         </div>
 
-    </div>
-    '
-])
-->settingBeforeSave(function($form){
-})
-->settingOnSave(function($ci){
-    set_option('enable_api_builder', $ci->input->post('enable_api_builder'));
-    set_option('enable_crud_builder', $ci->input->post('enable_crud_builder'));
-    set_option('enable_form_builder', $ci->input->post('enable_form_builder'));
-    set_option('enable_page_builder', $ci->input->post('enable_page_builder'));
-});
+//     </div>
+//     '
+// ])
+// ->settingBeforeSave(function($form){
+// })
+// ->settingOnSave(function($ci){
+//     set_option('enable_api_builder', $ci->input->post('enable_api_builder'));
+//     set_option('enable_crud_builder', $ci->input->post('enable_crud_builder'));
+//     set_option('enable_form_builder', $ci->input->post('enable_form_builder'));
+//     set_option('enable_page_builder', $ci->input->post('enable_page_builder'));
+// });
 
 
 $perm = [];

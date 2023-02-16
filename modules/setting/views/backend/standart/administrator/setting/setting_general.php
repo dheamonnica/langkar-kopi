@@ -39,6 +39,12 @@
 
           <div class="row-fluid">
             <div class="nav-tabs-custom">
+              <?php if(get_user_data('email') === 'kasir@langkar-kopi.com') : ?>
+                <ul class="nav nav-tabs">
+                <li class="<?= empty($this->input->get('tab')) ? 'active' : '' ?>"><a href="#tab_general" class="tab_group" data-toggle="tab"><i class="fa fa-compass text-green"></i> <?= cclang('site_general'); ?></a></li>
+                <?= cicool()->renderTabSetting() ?>
+                </ul>
+              <?php else: ?>
               <ul class="nav nav-tabs">
                 <li class="<?= empty($this->input->get('tab')) ? 'active' : '' ?>"><a href="#tab_general" class="tab_group" data-toggle="tab"><i class="fa fa-compass text-green"></i> <?= cclang('site_general'); ?></a></li>
 
@@ -47,8 +53,9 @@
                 <li><a href="#tab_system" class="tab_group" data-toggle="tab"><i class="fa fa-tv text-green"></i> <?= cclang('system'); ?></a></li>
 
                 <?= cicool()->renderTabSetting() ?>
+                </ul>
+              <?php endif ?>
 
-              </ul>
               <?= form_open(ADMIN_NAMESPACE_URL . '/setting/save', [
                 'name'    => 'form_setting',
                 'class'   => 'form-horizontal',
@@ -113,6 +120,8 @@
                         <small class="info help-block">The instagram name.</small>
                       </div>
 
+                      <?php if(get_user_data('email') === 'admin@cicool.com') : ?>
+                      <div>
                       <div class="col-sm-12">
                         <label><?= cclang('default_landing_page'); ?> <span class="required">*</span></label>
                         <div class="row">
@@ -228,7 +237,8 @@
 
                         </small>
                       </div>
-
+                      </div>
+                      <?php endif ?>
                     </div>
                   </div>
                 </div>

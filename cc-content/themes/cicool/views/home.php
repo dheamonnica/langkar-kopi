@@ -97,23 +97,17 @@
       <div id="myCarousel" class="carousel slide" data-ride="carousel">
          <!-- Indicators -->
          <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
+         <?php foreach ($slideshows as $slideshow): ?>
+            <li data-target="#myCarousel" data-slide-to="<?=$slideshow->order ?>" class="<?=$slideshow->order == 1 ? "active" : ""?>"></li>
+         <?php endforeach ?>
          </ol>
          <div class="carousel-inner" role="listbox">
-            <div class="item active">
-               <a href="kitchen.html"> <img class="bg-slide" src="https://dummyimage.com/1080x735/000/fff"
-                     alt="First slide"></a>
+         <?php foreach ($slideshows as $slideshow): ?>
+            <div class="<?=$slideshow->order == 0 ? "item active" : "item"?>">
+               <img class="bg-slide" src="<?= BASE_URL . 'uploads/slideshow/' . $slideshow->photo; ?>"
+                     >
             </div>
-            <div class="item">
-               <a href="care.html"> <img class="bg-slide " src="https://dummyimage.com/1080x735/000/fff"
-                     alt="Second slide"></a>
-            </div>
-            <div class="item">
-               <a href="hold.html"><img class="bg-slide " src="https://dummyimage.com/1080x735/000/fff"
-                     alt="Third slide"></a>
-            </div>
+         <?php endforeach ?>
          </div>
       </div>
       <!-- /.carousel -->
@@ -179,7 +173,7 @@
                   <ul class="bg-ig social-fo">
                      <li><a href="<?= get_option('instagram'); ?>"><i class="fa fa-instagram"
                               aria-hidden="true"></i></a></li>
-                     <li><a href="<?= get_option('site_name'); ?>"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                     <li><a href="<?= get_option('facebook'); ?>"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                      </li>
                      <li><a href="<?= get_option('twitter'); ?>"><i class="fa fa-twitter" aria-hidden="true"></i></a>
                      </li>
